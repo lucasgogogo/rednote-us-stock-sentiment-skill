@@ -1,3 +1,6 @@
+// Copyright (C) 2026 lucasgogogo — https://github.com/lucasgogogo/rednote-us-stock-sentiment-skill
+// SPDX-License-Identifier: AGPL-3.0-only
+// Author-attribution notice: see ATTRIBUTION.md (AGPL section 7(b)).
 import {validateConfig} from './config.mjs';
 import {installLease} from './lease.mjs';
 // Portable adaptation of our 2026-10-28 collector; upstream imports unchanged.

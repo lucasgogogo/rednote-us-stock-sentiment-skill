@@ -1,3 +1,6 @@
+# Copyright (C) 2026 lucasgogogo — https://github.com/lucasgogogo/rednote-us-stock-sentiment-skill
+# SPDX-License-Identifier: AGPL-3.0-only
+# Author-attribution notice: see ATTRIBUTION.md (AGPL section 7(b)).
 """Build the bundled static OFL font instances (authoring only, fonttools==4.60.1)."""
 import argparse
 import hashlib

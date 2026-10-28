@@ -1,1 +1,84 @@
-{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"Normalized Rednote post","type":"object","required":["note_id","detail_success","comments_success","comments","within_24h"],"properties":{"note_id":{"type":"string","pattern":"^[a-f0-9]{24}$"},"url":{"type":"string"},"detail_success":{"type":"boolean"},"comments_success":{"type":"boolean"},"within_24h":{"type":["boolean","null"]},"published_at":{"type":["string","null"],"format":"date-time"},"published_time_source":{"type":["string","null"]},"title":{"type":"string"},"body":{"type":"string"},"comments":{"type":"array","maxItems":50,"items":{"type":"object","required":["text","is_reply"],"properties":{"id":{"type":["string","null"]},"text":{"type":"string"},"is_reply":{"const":false},"time":{"type":["string","null"]}}}}}}
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Normalized Rednote post",
+  "type": "object",
+  "required": [
+    "note_id",
+    "detail_success",
+    "comments_success",
+    "comments",
+    "within_24h"
+  ],
+  "properties": {
+    "note_id": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{24}$"
+    },
+    "url": {
+      "type": "string"
+    },
+    "detail_success": {
+      "type": "boolean"
+    },
+    "comments_success": {
+      "type": "boolean"
+    },
+    "within_24h": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "published_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "published_time_source": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "body": {
+      "type": "string"
+    },
+    "comments": {
+      "type": "array",
+      "maxItems": 50,
+      "items": {
+        "type": "object",
+        "required": [
+          "text",
+          "is_reply"
+        ],
+        "properties": {
+          "id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "text": {
+            "type": "string"
+          },
+          "is_reply": {
+            "const": false
+          },
+          "time": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "$comment": "Copyright (C) 2026 lucasgogogo; https://github.com/lucasgogogo/rednote-us-stock-sentiment-skill ; AGPL-3.0-only. Author-attribution notice: ATTRIBUTION.md (section 7(b))."
+}

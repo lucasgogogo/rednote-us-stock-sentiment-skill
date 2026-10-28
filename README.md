@@ -2,6 +2,8 @@
 
 [English](README.en.md) · [复用与改动 / Provenance](references/PROVENANCE.md) · [数据 Schema](references/SCHEMA.md)
 
+**v2.0.0起采用AGPL-3.0-only：保留作者及原项目来源，受许可覆盖的修改版继续开源。**对外分发或用修改版提供网络服务时，按许可提供包含新增和修改部分的完整对应源码。纯私人自用不因修改就必须公开；v1.0.0已发布的Apache授权继续有效。详见[授权规则](references/LICENSE-POLICY.md)和[来源署名通知](ATTRIBUTION.md)。
+
 通过已登录的 Rednote 浏览器，串行采集最近24小时的美股关键词讨论，先存 raw，再做文字观点分析，最后输出固定 **4:3** 报告。默认最多100篇帖子、每篇50条一级留言。
 
 ![固定4:3模板，演示数据](examples/preview.png)
@@ -47,7 +49,7 @@ node scripts/render.mjs --input examples/report.json --output output/report
 
 本包不是从零实现浏览器引擎。**OpenCLI 2.0.2**提供浏览器桥接、搜索滚动构建器、详情提取和评论工具函数；上游包保持原样。我们增加24小时真实时间筛选、虚拟列表累计去重、受限串行采集、原生评论分页补读、raw追加/冻结、带证据的多空分析、数据schema、费用核算和固定品牌模板。详细逐文件对照、版本、许可证和测试边界见 [中英文来源说明](references/PROVENANCE.md)。
 
-主要依赖：OpenCLI（Apache-2.0）、resvg-js（MPL-2.0）、Noto字体（OFL-1.1）、Simple Icons图标（CC0）。字体构建使用fontTools；它不是运行时依赖。我们的代码采用Apache-2.0；字体、第三方标志及创作者头像按各自声明处理，不能把公司商标说成我们的原创。
+主要依赖：OpenCLI（Apache-2.0）、resvg-js（MPL-2.0）、Noto字体（OFL-1.1）、Simple Icons图标（CC0）。字体构建使用fontTools；它不是运行时依赖。v2.0.0起我们的原创代码和模板采用AGPL-3.0-only；第三方组件保留原许可，字体、第三方标志及创作者头像按各自声明处理，不能把公司商标说成我们的原创。
 
 ## 已验证与限制
 

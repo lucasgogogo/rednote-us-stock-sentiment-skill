@@ -2,6 +2,8 @@
 
 维护者 / Maintainer: [lucasgogogo](https://github.com/lucasgogogo). 初版 / Initial release: 2026-10-28.
 
+v2.0.0起本项目原创代码/模板改为AGPL-3.0-only，并保留[作者来源通知](../ATTRIBUTION.md)；v1.0.0历史Apache授权继续有效。这里列出的上游许可保持原样，不随本项目新许可被替换。 / Original code/template from v2.0.0 uses AGPL-3.0-only with retained author attribution. The v1.0.0 Apache grant and all listed upstream licenses remain valid. See [policy](LICENSE-POLICY.md).
+
 ## 开源项目对照 / Open-source matrix
 
 | 项目 / Project | 版本、许可 / Version, license | 复用范围 / Reused | 我们的处理 / Our changes |
@@ -32,7 +34,7 @@ OpenCLI imports use internal file paths because the needed helpers are not all p
 - `assets/brand/luxixi-avatar.jpg`：创作者既有公开头像原件，用户明确授权放入本模板与公开包；不通过AI重画。名称“撸西西 | 教AI”、抖音号15682165由用户现有品牌资料核对，并在本聊天确认。 / Creator-provided original avatar and confirmed public identity. No AI redraw.
 - `assets/logos/GOOGL.png`：[Google官方G图标](https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png)，文件来源和SHA256在素材清单。 / Official Google G asset with source/hash recorded.
 - `assets/logos/MSFT.svg`、`SKHY.svg`：我们用几何和文字绘制的识别性示意，不是公司授权背书，也不声称商标原创。 / Our geometric/typographic identification drawings, not endorsed official artwork.
-- 公司标志、平台标志和头像不随软件Apache许可重新授权；保留各自的商标、肖像及版权归属。品牌头像随本分发包用于原样署名展示。 / Marks and identity assets are not relicensed as Apache software; their original rights remain. The creator avatar is bundled for unchanged attribution display in this distribution.
+- 公司标志、平台标志和头像不随软件AGPL许可重新授权；保留各自的商标、肖像及版权归属。品牌头像随本分发包用于原样署名展示。 / Marks and identity assets are not relicensed as AGPL software; their original rights remain. The creator avatar is bundled for unchanged attribution display in this distribution.
 
 ## 未包含的项目与测试边界 / Exclusions and verification boundary
 

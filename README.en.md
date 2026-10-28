@@ -2,6 +2,8 @@
 
 [中文](README.md) · [Upstream reuse and our changes](references/PROVENANCE.md) · [Data schema](references/SCHEMA.md)
 
+**From v2.0.0: AGPL-3.0-only, with retained author/origin attribution and copyleft for covered modified versions.** Conveying copies or running a modified network service triggers the applicable source obligations, including added/changed code that forms Corresponding Source. Private modification alone does not require publication. The published Apache-2.0 grant for v1.0.0 remains valid. See [licensing policy](references/LICENSE-POLICY.md) and [author attribution](ATTRIBUTION.md).
+
 Collect a bounded 24-hour keyword sample from a logged-in Rednote browser, preserve raw evidence first, review the text, and render the same **4:3** report every time. Defaults: at most 100 posts and 50 first-level comments per post, serial browser operations.
 
 ![Fixed branded template — demonstration data](examples/preview.png)
@@ -47,7 +49,7 @@ Outputs: PNG, SVG, and a manifest. With the same runtime environment, software v
 
 **OpenCLI 2.0.2** supplies the browser bridge, search scroll builder, visible detail extraction and comment helpers. Its installed source is not patched. Our wrappers add real publication-time filtering, accumulation/deduplication, serial limits, visible native comment paging, append-only repair, raw hashing/freezing, evidence-backed annotations, schemas, cost accounting and the fixed branded SVG/PNG template.
 
-[PROVENANCE.md](references/PROVENANCE.md) contains the bilingual file-level matrix, licenses, modifications and verification boundaries. Runtime dependencies include OpenCLI (Apache-2.0) and resvg-js (MPL-2.0); fonts use OFL-1.1 and the Simple Icons glyph uses CC0. fontTools is an authoring-only font-build tool. Our code is Apache-2.0. Company marks and creator identity assets retain their own notices; they are not claimed as original software artwork.
+[PROVENANCE.md](references/PROVENANCE.md) contains the bilingual file-level matrix, licenses, modifications and verification boundaries. Runtime dependencies include OpenCLI (Apache-2.0) and resvg-js (MPL-2.0); fonts use OFL-1.1 and the Simple Icons glyph uses CC0. fontTools is an authoring-only font-build tool. Our original code and template from v2.0.0 use AGPL-3.0-only; upstream components retain their terms. Company marks and creator identity assets retain their own notices; they are not claimed as original software artwork.
 
 The predecessor adapter completed one real overseas-site run of 100 posts/583 first-level comments using OpenCLI 2.0.2, extension 1.0.26 and Ego Lite. Packaging performed offline regression and template checks, without another live scrape. The portable release has not been live-tested on every OS or a fresh account. Platform DOM or internal OpenCLI export changes require revalidation.
 
