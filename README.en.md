@@ -1,58 +1,46 @@
 # Rednote US-stock sentiment Skill
 
-[中文](README.md) · [Upstream reuse and our changes](references/PROVENANCE.md) · [Data schema](references/SCHEMA.md)
+[中文](README.md) · [Schema](references/SCHEMA.md) · [Provenance](references/PROVENANCE.md)
 
-**From v2.0.0: AGPL-3.0-only, with retained author/origin attribution and copyleft for covered modified versions.** Conveying copies or running a modified network service triggers the applicable source obligations, including added/changed code that forms Corresponding Source. Private modification alone does not require publication. The published Apache-2.0 grant for v1.0.0 remains valid. See [licensing policy](references/LICENSE-POLICY.md) and [author attribution](ATTRIBUTION.md).
 
-Collect a bounded 24-hour keyword sample from a logged-in Rednote browser, preserve raw evidence first, review the text, and render the same **4:3** report every time. Defaults: at most 100 posts and 50 first-level comments per post, serial browser operations.
+Use your logged-in Rednote browser to collect a bounded 24-hour US-stock discussion sample, save raw evidence first, review title/body sentiment, and render a fixed **1600×1200, 4:3** report. Defaults: up to **100 posts** and **50 first-level comments per post**, serial operations.
 
-![Fixed branded template — demonstration data](examples/preview.png)
+The report includes actual exported counts, five sentiment categories, a data-derived conclusion, the top three stocks by distinct mentioning posts, and a two-hour publication-time line. The creator avatar, Douyin ID **15682165** and **撸西西 | 教AI** remain in the bottom-right corner. The preview's timing, usage and billing are explicitly illustrative.
 
-The visual hierarchy emphasizes actual post count, actual first-level comment count, and the data-derived sentiment conclusion. The donut, publication-time line chart and top three stock rows use fixed coordinates, colors and bundled fonts. Every output includes the original creator avatar, Douyin symbol, **抖音搜索：15682165**, and **撸西西 | 教AI** in the bottom-right corner. The distributed renderer has no hide-brand flag.
+![Fixed branded report — demo usage and billing](examples/preview.png)
 
-## Install and run
+### Download and install
 
-Requires Node.js ≥20.18.1. Place the complete repository in your agent's skills directory, for example `~/.codex/skills/rednote-us-stock-sentiment-skill`, then run:
+1. [Download the complete v2.0.1 ZIP](https://github.com/lucasgogogo/rednote-us-stock-sentiment-skill/releases/download/v2.0.1/rednote-us-stock-sentiment-skill-v2.0.1.zip).
+2. Extract the full folder into your agent's skill directory, such as `~/.codex/skills/rednote-us-stock-sentiment-skill`.
+3. With Node.js ≥20.18.1, run `npm ci --ignore-scripts`, `npm run demo`, then `npm test` from that folder.
+4. Install the official [OpenCLI extension](https://github.com/jackwener/OpenCLI), personally approve permissions, and log in to `rednote.com` in the selected browser.
 
-```bash
-npm ci --ignore-scripts
-npm run demo
-npm test
+### Ask your agent
+
+```text
+Use $rednote-us-stock-sentiment-skill to collect a 24-hour Rednote sample for 美股.
+At most 100 posts and 50 primary comments per post, serially.
+Preserve raw data before reviewing title/body sentiment and stock mentions.
+Report actual counts and render the bundled fixed branded 4:3 layout.
+Stop for login, captcha or rate/security restrictions. Do not run another MCP collector.
+Keep missing timing/usage/billing unknown rather than fabricating zero.
 ```
 
-Ignoring installation scripts prevents OpenCLI's installation-time daemon/adapter update hooks. The browser is connected only when collection is requested. Rendering needs no generative-image API, Python installation or system fonts.
-
-Example agent request:
-
-> Use $rednote-us-stock-sentiment-skill to collect a 24-hour US-stock discussion sample from Rednote, at most 100 posts and 50 first-level comments per post. Save raw data before analysis and render the fixed branded report.
-
-Install the official [OpenCLI browser extension](https://github.com/jackwener/OpenCLI), personally approve its permissions, and log in to `rednote.com`. The package neither logs in for you nor reads/exports cookies. See [Collection](references/COLLECTION.md) for staged commands and stop/resume behavior.
-
-To render an existing report:
+Existing report data can be rendered with:
 
 ```bash
-node scripts/render.mjs --input examples/report.json --output output/report
+node scripts/render.mjs --input path/to/analysis/report.json --output output/report
 ```
 
-Outputs: PNG, SVG, and a manifest. With the same runtime environment, software version, bundled fonts and input, repeated PNG/SVG bytes are identical. Share the PNG; opening the editable SVG separately requires the bundled font family. Missing metrics remain unknown instead of becoming zero.
+The model in your agent performs text review; rendering needs no generative-image API. A full collection/analysis run produces raw snapshots, normalized posts, annotations and aggregate JSON. Rendering an existing report produces only PNG, SVG and a manifest. Share the PNG; opening the editable SVG separately requires the bundled fonts. No image OCR or video transcription is included. The sample is not a platform census, and its time line is not a stock-price chart.
 
-## Counting and cost semantics
+### Reuse, license and verification
 
-- The window applies to actual post publication time. Comments are visible snapshots taken during collection; they need not have been written in that window.
-- Sentiment uses title/body text only. Unread image/video opinions and insufficient text remain unknown. Historical price changes or P/L emotions alone are not forecasts.
-- Rank individual stocks by distinct mentioning posts; deduplicate repeated mentions within a post, exclude indices/ETFs, merge GOOG/GOOGL, and break equal-post ties by ticker.
-- The line is this sample's two-hour publication distribution, not platform-wide volume, sentiment history or stock prices.
-- The demo's 20 minutes, 1.11M tokens, $1.75 equivalent API estimate and quota values are illustrative, not an actual collection bill. API-equivalent estimates, subscription fees and extra charges are different quantities.
-- Pricing is a dated official-source snapshot. Recheck it for new estimates. Account-wide quota changes cannot be attributed precisely to one task.
+OpenCLI supplies browser/adapter primitives; resvg-js supplies SVG rendering. Our wrappers add time validation, accumulation/deduplication, serial caps, primary-comment paging, raw freezing, evidence-backed analysis, cost accounting and the fixed template. Fonts/icons retain their own notices. See the [full provenance matrix](references/PROVENANCE.md).
 
-## What is reused, what is ours
+Original v2 material uses AGPL-3.0-only with reasonable origin attribution and applicable Corresponding Source obligations for distributed or modified network versions. The earlier v1.0.0 Apache grant remains valid. See [licensing policy](references/LICENSE-POLICY.md).
 
-**OpenCLI 2.0.2** supplies the browser bridge, search scroll builder, visible detail extraction and comment helpers. Its installed source is not patched. Our wrappers add real publication-time filtering, accumulation/deduplication, serial limits, visible native comment paging, append-only repair, raw hashing/freezing, evidence-backed annotations, schemas, cost accounting and the fixed branded SVG/PNG template.
+The project includes twelve offline tests; see [Actions](https://github.com/lucasgogogo/rednote-us-stock-sentiment-skill/actions) for the current version’s CI status. One predecessor live run was successful; the portable package has not been live-tested on every browser or fresh account. Private raw/session/account records are excluded from the release.
 
-[PROVENANCE.md](references/PROVENANCE.md) contains the bilingual file-level matrix, licenses, modifications and verification boundaries. Runtime dependencies include OpenCLI (Apache-2.0) and resvg-js (MPL-2.0); fonts use OFL-1.1 and the Simple Icons glyph uses CC0. fontTools is an authoring-only font-build tool. Our original code and template from v2.0.0 use AGPL-3.0-only; upstream components retain their terms. Company marks and creator identity assets retain their own notices; they are not claimed as original software artwork.
-
-The predecessor adapter completed one real overseas-site run of 100 posts/583 first-level comments using OpenCLI 2.0.2, extension 1.0.26 and Ego Lite. Packaging performed offline regression and template checks, without another live scrape. The portable release has not been live-tested on every OS or a fresh account. Platform DOM or internal OpenCLI export changes require revalidation.
-
-## Sources / Pre-Action Check
-
-The commands above install local dependencies, run synthetic tests and render a demo; they do not access Rednote. They follow this repository's package/scripts and the checked official [OpenCLI](https://github.com/jackwener/OpenCLI) and [resvg-js](https://github.com/thx/resvg-js) documentation. Collection stops for login, rate/security blocks or hidden native-scroll pages. Versions/hashes are in the lockfile and asset manifests.
+See [the staged collection and recovery guide](references/COLLECTION.md), [data and billing schema](references/SCHEMA.md), and [author-attribution notice](ATTRIBUTION.md) for the exact workflow. Missing measurements stay unknown; do not treat synthetic demo billing as real usage. The original code/template licensing boundary starts at v2.0.0; the earlier Apache grant for v1.0.0 remains valid.

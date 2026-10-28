@@ -11,6 +11,8 @@ Original project material from v2.0.0 uses AGPL-3.0-only. Preserve the author/or
 
 ## Choose the mode
 
+On first installation, follow the matching [Chinese](README.md) or [English](README.en.md) setup guide. Check Node.js and the pinned local dependencies; use `npm ci --ignore-scripts` if dependencies are missing, then render the bundled demo. Preparing the environment alone does not authorize a live platform collection. Extension permission/login are the user's actions; choose the actual logged-in browser context before starting an authorized run.
+
 - **Collect + analyze + report:** read [references/COLLECTION.md](references/COLLECTION.md), then run the staged scripts. Use one browser session; do not run an MCP collector or another CLI collector at the same time. Browser extension installation/permissions and login remain the user's actions.
 - **Analyze existing raw:** verify `raw-freeze.json`, annotate the accepted post texts, then run `scripts/analyze.mjs`. No new browser requests are necessary.
 - **Render existing report:** read the report schema in [references/SCHEMA.md](references/SCHEMA.md); run `node scripts/render.mjs --input <report.json> --output <output-prefix>`. No image-generation API is involved.

@@ -1,18 +1,35 @@
 # Rednote美股舆情 Skill
 
-[English](README.en.md) · [复用与改动 / Provenance](references/PROVENANCE.md) · [数据 Schema](references/SCHEMA.md)
+[English](README.en.md) · [数据Schema](references/SCHEMA.md) · [来源与改动](references/PROVENANCE.md)
 
-**v2.0.0起采用AGPL-3.0-only：保留作者及原项目来源，受许可覆盖的修改版继续开源。**对外分发或用修改版提供网络服务时，按许可提供包含新增和修改部分的完整对应源码。纯私人自用不因修改就必须公开；v1.0.0已发布的Apache授权继续有效。详见[授权规则](references/LICENSE-POLICY.md)和[来源署名通知](ATTRIBUTION.md)。
+想知道最近24小时，小红书海外版上讨论美股的人更偏看多还是看空？这个skill让你的AI在已登录的Rednote浏览器里搜索，先保存原始数据，再逐帖分析，最后生成同一套4:3报告。
 
-通过已登录的 Rednote 浏览器，串行采集最近24小时的美股关键词讨论，先存 raw，再做文字观点分析，最后输出固定 **4:3** 报告。默认最多100篇帖子、每篇50条一级留言。
+**默认最多100篇帖子，每篇最多50条一级留言。**这是关键词样本分析，不是平台全量普查。
 
-![固定4:3模板，演示数据](examples/preview.png)
+**[下载完整skill包（v2.0.1 ZIP）](https://github.com/lucasgogogo/rednote-us-stock-sentiment-skill/releases/download/v2.0.1/rednote-us-stock-sentiment-skill-v2.0.1.zip)** · [中文完整说明](README.md) · [English guide](README.en.md)
 
-模板重点依次是：**实际帖子数、实际一级留言数、多空结论**。环形图中心由数据计算；保留发帖时间折线和讨论最多的三只股票。右下角固定保留原头像、抖音图标、**抖音搜索：15682165**、**撸西西 | 教AI**，程序没有隐藏品牌的参数。
+## 最后能得到什么
 
-## 安装与使用
+![固定4:3报告模板：图中费用与额度是演示值](examples/preview.png)
 
-需要 Node.js ≥20.18.1。把完整仓库放进你的 agent 技能目录，例如 `~/.codex/skills/rednote-us-stock-sentiment-skill`，然后在该目录安装锁定依赖：
+1. **实际抓到多少篇帖子、多少条一级留言。**没有读到的部分不冒充已经拿全。
+2. **看多、看空、中性、多空混合、无法判断各多少篇。**圆环中心按当前数据计算结论，不会每次都写“偏多”。
+3. **讨论最多的三只股票。**按提及该股票的去重帖数排名，并列出各自的文字方向。
+4. **样本发帖时间折线。**按真实发布时间每2小时归档，展示这批样本的分布。
+5. **原始数据和分析依据。**保留搜索、帖子详情、留言快照、逐帖判断及原文依据，方便回查。
+6. **固定4:3图片。**1600×1200，位置、字体和颜色固定；右下角保留原头像、抖音号15682165和“撸西西 | 教AI”。
+
+有真实记录时，还能填写耗时、token和API等量费用估算；实际订阅额外付费单独显示。没有记录就显示未知。**上图的20分钟、111万token、$1.75及额度变化是演示数据，不是本次采集账单。**
+
+## 安装：先让AI把环境准备好
+
+需要Node.js ≥20.18.1、一个支持读取本地skill的AI客户端，以及官方OpenCLI浏览器扩展。分析使用你当前AI客户端的模型；渲染不调用图像生成API。
+
+**1、下载上方完整ZIP。**解压后保留整个`rednote-us-stock-sentiment-skill`目录，包括scripts、assets和references。
+
+**2、放进skill目录。**Codex常用位置是`~/.codex/skills/rednote-us-stock-sentiment-skill`。
+
+**3、在这个目录安装锁定依赖并试出一张演示图：**
 
 ```bash
 npm ci --ignore-scripts
@@ -20,43 +37,78 @@ npm run demo
 npm test
 ```
 
-`--ignore-scripts`避免安装阶段启动OpenCLI后台服务或下载更新适配器；实际采集时才连接浏览器。普通渲染只依赖随包字体和SVG渲染器，不调用图像生成模型。
+也可以直接把仓库地址交给Codex：
 
-向 agent 提出：
+```text
+请把这个仓库安装成可用的skill：
+https://github.com/lucasgogogo/rednote-us-stock-sentiment-skill
 
-> 使用 $rednote-us-stock-sentiment-skill，抓一次最近24小时的美股讨论，最多100篇、每篇50条一级留言，先保存raw，再分析多空和热门股票，使用固定品牌模板出图。
+先检查Node版本、安装锁定依赖，并生成本地演示图。
+暂时不要访问Rednote，不要发送任何内容。
+浏览器扩展和权限需要我本人确认时，再告诉我具体操作。
+```
 
-首次采集需安装官方 [OpenCLI 浏览器扩展](https://github.com/jackwener/OpenCLI)，由本人确认权限并登录 `rednote.com`。本包不代替账号登录，不读取或导出Cookie。浏览器调用步骤、暂停与恢复见 [采集指南](references/COLLECTION.md)。
+**4、本人安装官方[OpenCLI扩展](https://github.com/jackwener/OpenCLI)，确认权限，并在对应浏览器登录`rednote.com`。**程序不代替你登录，也不读取或导出Cookie。原适配曾在Ego Lite上完成一次真实采集；这个便携包没有对所有浏览器、新账号做平台实测。
 
-已有报告只需：
+## 第一次怎么用
+
+安装完成、浏览器登录后，直接对AI说：
+
+```text
+使用 $rednote-us-stock-sentiment-skill，采集Rednote最近24小时的“美股”讨论。
+最多100篇帖子，每篇最多50条一级留言，串行执行。
+
+先保存raw，再根据标题和正文逐帖判断看多、看空、中性、多空混合或无法判断。
+给出实际帖子数、留言数和讨论最多的三只股票。
+用随包固定4:3模板出图，保留右下角logo、抖音号和名字。
+
+遇到登录、验证码或频率限制就停止，不绕过，不同时启动MCP。
+费用没有真实记录时写未知，不要编成0美元。
+```
+
+只想用已有数据重新出图：
 
 ```bash
 node scripts/render.mjs --input examples/report.json --output output/report
 ```
 
-输出 `report.png`、`report.svg` 和 `report.manifest.json`。同一运行环境、版本、字体和输入重复渲染，PNG/SVG字节一致。固定字体已经随包提供，渲染不需要安装Python或系统字体；对外分享使用PNG，SVG源码另行打开时需使用随包字体。
+真实报告把`examples/report.json`换成对应的`analysis/report.json`。输出PNG、SVG和校验清单；分享图片使用PNG。SVG另行打开需使用随包字体。
 
-## 统计与费用口径
+## 原始数据保存在哪里
 
-- 帖子窗口按真实发帖时间核定；留言为采集时可见的一级留言，不要求留言时间也在同一个24小时内。
-- 只分析标题与正文。正文不足、图片和视频里未读取的观点保留“无法判断”，不能当成中性。
-- 热门股票按去重提及帖子数排序，同帖同股票只计一次；ETF/指数不进入个股榜，GOOG/GOOGL合并。同帖数按代码排序。
-- 折线是本次样本在每2小时的发帖量分布，不能冒充全平台新增量、历史情绪或股价走势。
-- Token用量和实际额外付费没有记录时显示“未记录/未知”。示例中的20分钟、111万token、$1.75和订阅额度均为演示，不是真实采集账单。
-- API折算使用有日期和官方来源的价格快照；当前示例是Claude Fable 5.1标准费率。订阅月费与本次额外付费分开，不能把订阅账号一律写成免费。
+每次运行选择自己的本地run目录，主要产物为：
 
-## 用了谁的，自己做了什么
+| 文件 | 内容 |
+|---|---|
+| `raw/` | 搜索、详情、留言的原始观察记录 |
+| `posts-final.jsonl` | 去重帖子与最后一次留言修订 |
+| `raw-freeze.json` | 原始资料SHA256清单 |
+| `analysis/annotations.json` | 逐帖立场、股票身份和原文依据 |
+| `analysis/report.json` | 汇总及固定模板输入 |
+| `analysis/report.png` | 固定品牌4:3报告 |
 
-本包不是从零实现浏览器引擎。**OpenCLI 2.0.2**提供浏览器桥接、搜索滚动构建器、详情提取和评论工具函数；上游包保持原样。我们增加24小时真实时间筛选、虚拟列表累计去重、受限串行采集、原生评论分页补读、raw追加/冻结、带证据的多空分析、数据schema、费用核算和固定品牌模板。详细逐文件对照、版本、许可证和测试边界见 [中英文来源说明](references/PROVENANCE.md)。
+详细字段、留言统计、时间窗和费用口径见[中英文schema说明](references/SCHEMA.md)。
 
-主要依赖：OpenCLI（Apache-2.0）、resvg-js（MPL-2.0）、Noto字体（OFL-1.1）、Simple Icons图标（CC0）。字体构建使用fontTools；它不是运行时依赖。v2.0.0起我们的原创代码和模板采用AGPL-3.0-only；第三方组件保留原许可，字体、第三方标志及创作者头像按各自声明处理，不能把公司商标说成我们的原创。
+## 读结果时要看清的几件事
 
-## 已验证与限制
+- 只分析标题与正文，不默认识别图片或转写视频；文字不足保留“无法判断”。
+- 留言数是实际导出的一级留言数，不等于平台完整评论区总数；留言可能写于发帖窗口之外。
+- 股票热度按去重帖数，不按涨跌幅；ETF和指数不混入个股榜，GOOG/GOOGL合并。
+- 折线是样本发帖时间分布，不能当成股价或全站情绪走势。
+- 登录、风控、隐藏页面或加载故障会影响采集量。没有足够合格帖子时就报告实际数量，不拿旧帖凑100。
 
-原始采集适配曾在Rednote海外站、OpenCLI 2.0.2、扩展1.0.26及Ego Lite上完成100篇/583条一级留言的单次采集。本次公开包只做离线回归和模板验证，没有为了打包再次访问账号。便携打包版本尚未在全新账号或所有操作系统上做平台实测。
+## 用了哪些开源项目，我们加了什么
 
-`npm test`检查时间边界、去重和上限、一级评论EOF/可见性、raw篡改、标注证据、费用计算、固定品牌、4:3尺寸和重复渲染一致。平台页面或OpenCLI内部导出改变后需要重新验证，不能把历史成功当作永久可用。
+**OpenCLI 2.0.2**提供浏览器桥接、搜索滚动构建器、详情提取和评论工具函数；**resvg-js 2.6.2**负责SVG转PNG。Noto字体和Simple Icons图形也保留原许可。
 
-## Sources / Pre-Action Check
+我们新增或整理了：真实发帖时间校验、搜索累计去重、串行上限、可见页一级评论补读、追加修订、raw冻结、带原文依据的多空分析、费用口径，以及固定品牌模板。
 
-上面的命令在本地安装依赖、运行合成测试和渲染演示；不会登录或采集平台。依据为本仓库`package.json`、`scripts/`，以及已核对的 [OpenCLI](https://github.com/jackwener/OpenCLI)、[resvg-js](https://github.com/thx/resvg-js)。首次浏览器权限/登录由用户处理；遇到扩展不连通、登录/风控或不可见评论页时暂停，不绕过限制。版本来源和文件哈希见`assets/source-manifest.json`、字体构建清单和`package-lock.json`。
+[逐文件来源、版本、许可证与改动对照（中英文）](references/PROVENANCE.md)
+
+## 授权与版本
+
+本版原创代码和模板采用**AGPL-3.0-only**：保留合理作者/来源通知；对外分发修改版或用修改版提供网络服务时，按许可提供完整对应源码，包括受许可覆盖的新增和改动。私人自用不因修改就必须公开。v1.0.0已经发布的Apache授权继续有效，第三方保留各自许可。
+
+[授权规则](references/LICENSE-POLICY.md) · [来源署名通知](ATTRIBUTION.md)
+
+项目提供12项离线测试，当前版本的CI状态可在[Actions](https://github.com/lucasgogogo/rednote-us-stock-sentiment-skill/actions)查看。打包没有再次抓取账号；真实raw、登录信息和账户记录没有放进公开包。
