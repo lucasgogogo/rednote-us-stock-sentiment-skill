@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "demo": true,
+  "keyword": "美股",
+  "source": "rednote.com",
+  "window_start_utc": "2026-10-27T17:40:00.000Z",
+  "window_end_utc": "2026-10-28T17:40:00.000Z",
+  "timezone": "America/Winnipeg",
+  "posts_in_window": 100,
+  "primary_comments_exported": 583,
+  "max_comments_per_post": 50,
+  "stance_counts": {"看多": 26, "看空": 1, "中性": 48, "多空混合": 3, "无法判断": 22},
+  "timeline": [0,0,1,0,0,1,1,0,5,31,40,21],
+  "stock_ranking": [
+    {"ticker":"SKHY","name":"SK海力士","posts":26,"post_stance_counts":{"看多":10,"看空":0,"中性":12,"多空混合":0,"无法判断":4}},
+    {"ticker":"MSFT","name":"微软","posts":12,"post_stance_counts":{"看多":1,"看空":0,"中性":10,"多空混合":0,"无法判断":1}},
+    {"ticker":"GOOGL","name":"谷歌","posts":11,"post_stance_counts":{"看多":1,"看空":0,"中性":8,"多空混合":1,"无法判断":1}}
+  ],
+  "metrics": {
+    "elapsed_seconds": 1200,
+    "usage": {"input_tokens":1100000,"cached_input_tokens":1000000,"cache_write_input_tokens":0,"output_tokens":10000},
+    "billing": {"plan":"Codex订阅账号（演示）","extra_usd":0,"source":"Synthetic demo fixture; not a real account bill"},
+    "quota": {"before":20,"after":21,"same_window":true,"source":"Synthetic demo fixture"}
+  }
+}

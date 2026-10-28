@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200">
+<rect width="1600" height="1200" fill="#ffffff"/>
+<g font-family="Luxixi Report Sans" fill="#07183e">
+{{HEADER}}
+<rect x="24" y="70" width="1552" height="164" rx="14" fill="#f1f7fd" stroke="#e2edf8"/>
+{{METRICS}}
+<rect x="24" y="250" width="832" height="440" rx="14" fill="#ffffff" stroke="#e1ecf7"/>
+<rect x="872" y="250" width="704" height="440" rx="14" fill="#ffffff" stroke="#e1ecf7"/>
+{{SENTIMENT}}{{STOCKS}}
+<rect x="24" y="706" width="832" height="360" rx="14" fill="#ffffff" stroke="#e1ecf7"/>
+<rect x="872" y="706" width="704" height="360" rx="14" fill="#ffffff" stroke="#e1ecf7"/>
+{{TIMELINE}}{{COSTS}}
+<rect x="24" y="1080" width="1046" height="96" rx="12" fill="#f1f7fd"/>
+<rect x="1086" y="1080" width="490" height="96" rx="12" fill="#f1f7fd" stroke="#d6e7fa"/>
+{{FOOTER}}{{BRAND}}
+</g></svg>

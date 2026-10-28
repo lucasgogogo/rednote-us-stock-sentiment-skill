@@ -1,0 +1,52 @@
+[
+  {
+    "path": "assets/fonts/OFL.txt",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/OFL.txt",
+    "sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+    "bytes": 4388
+  },
+  {
+    "path": "assets/brand/douyin.svg",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/tiktok.svg",
+    "sha256": "846b3a1de439c234298516fb82394802a141f95ff1531c536685ef1d486a3daf",
+    "bytes": 2055,
+    "source_sha256": "6f54ac8d325faacea8935bdc44cbed60206a6b408641799e5fea1cba7c1a0af7",
+    "transformation": "CC0 path repeated with cyan/red offsets and black foreground"
+  },
+  {
+    "path": "assets/brand/SIMPLE-ICONS-LICENSE.txt",
+    "source": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/LICENSE.md",
+    "sha256": "9046848b63a5c92bff14e4accca80bd987e0623b74adf9226ce5198d312b79d5",
+    "bytes": 6569
+  },
+  {
+    "path": "assets/logos/GOOGL.png",
+    "source": "https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png",
+    "sha256": "5b95eed86b7603081f22edd5da01de4c028b118b20885793b9b3ad5f6cbe1e71",
+    "bytes": 3428
+  },
+  {
+    "path": "assets/fonts/LuxixiReportSans-Regular.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf",
+    "source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+    "sha256": "29f151b50a1abde1a4f29ba1273fbce333ad8456722188b47d66402ec5c415c7",
+    "bytes": 10596136,
+    "license": "OFL-1.1",
+    "transformation": "fontTools 4.60.1 static weight 400; renamed Luxixi Report Sans"
+  },
+  {
+    "path": "assets/fonts/LuxixiReportSans-Bold.ttf",
+    "source": "https://raw.githubusercontent.com/google/fonts/main/ofl/notosanssc/NotoSansSC%5Bwght%5D.ttf",
+    "source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+    "sha256": "4fe321fda51094d23416047aa911e244befd9b0e7e31e2d4242a1ba284f8e6e7",
+    "bytes": 10585652,
+    "license": "OFL-1.1",
+    "transformation": "fontTools 4.60.1 static weight 700; renamed Luxixi Report Sans"
+  },
+  {
+    "path": "assets/brand/luxixi-avatar.jpg",
+    "source": "Creator-provided public brand avatar approved for this distribution",
+    "sha256": "b6f3bba84a9d2ea49c4bf4da4068486c47c872213dfddfa15ba781a5c774f154",
+    "bytes": 3393
+  }
+]

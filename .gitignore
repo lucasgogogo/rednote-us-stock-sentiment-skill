@@ -1,0 +1,11 @@
+node_modules/
+runs/
+raw/
+output/
+*.local.json
+session.json
+.env*
+*.zip
+__pycache__/
+.test-output/
+assets/fonts/NotoSansSC.ttf

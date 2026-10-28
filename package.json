@@ -1,0 +1,13 @@
+{
+  "name": "rednote-us-stock-sentiment-skill",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "license": "Apache-2.0",
+  "engines": {"node": ">=20.18.1"},
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "demo": "node scripts/render.mjs --input examples/report.json --output examples/preview"
+  },
+  "dependencies": {"@jackwener/opencli": "2.0.2", "@resvg/resvg-js": "2.6.2"}
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "file": "LuxixiReportSans-Regular.ttf",
+    "weight": 400,
+    "source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+    "sha256": "29f151b50a1abde1a4f29ba1273fbce333ad8456722188b47d66402ec5c415c7"
+  },
+  {
+    "file": "LuxixiReportSans-Bold.ttf",
+    "weight": 700,
+    "source_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+    "sha256": "4fe321fda51094d23416047aa911e244befd9b0e7e31e2d4242a1ba284f8e6e7"
+  }
+]

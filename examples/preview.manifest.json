@@ -1,0 +1,11 @@
+{
+  "template": "approved-4x3-brand-v1",
+  "width": 1600,
+  "height": 1200,
+  "brand_required": true,
+  "brand_name": "撸西西 | 教AI",
+  "douyin_id": "15682165",
+  "avatar_sha256": "b6f3bba84a9d2ea49c4bf4da4068486c47c872213dfddfa15ba781a5c774f154",
+  "svg_sha256": "67f293139fa498ee079f385d96e416db7b3f5c9b8abf30d7dea1581504f6471d",
+  "png_sha256": "c984a8069db712dea00e0112572698af4915151a26be098db4907cad035409ff"
+}

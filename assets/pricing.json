@@ -1,0 +1,9 @@
+{
+  "model": "Claude Fable 5.1",
+  "currency": "USD",
+  "verified_at": "2026-10-28",
+  "source": "https://platform.claude.com/docs/en/models/fable-5-1/overview",
+  "per_million": {"input": 10, "cached_input": 0.25, "cache_write_input": 12.5, "output": 50},
+  "cache_write_duration": "5 minutes",
+  "mode": "standard online API; equivalent-token estimate, not actual Claude billing"
+}

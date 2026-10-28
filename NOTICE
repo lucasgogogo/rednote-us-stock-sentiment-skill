@@ -1,0 +1,18 @@
+Rednote US-stock sentiment skill
+Copyright 2026 lucasgogogo
+
+Software code and original template: Apache License 2.0 (LICENSE).
+OpenCLI 2.0.2: Apache-2.0, https://github.com/jackwener/OpenCLI
+resvg-js 2.6.2: MPL-2.0, https://github.com/thx/resvg-js
+Luxixi Report Sans: derived static instances of Noto Sans SC, OFL-1.1.
+Original font copyright and license: assets/fonts/OFL.txt.
+Simple Icons music-note glyph: CC0-1.0, assets/brand/SIMPLE-ICONS-LICENSE.txt.
+fontTools 4.60.1: MIT, used only during font preparation; not bundled as code.
+
+Creator identity assets and corporate/platform marks retain their respective
+copyright, publicity and trademark rights and are not relicensed as Apache code.
+The creator avatar is provided for unchanged attribution display in this package.
+No affiliation or endorsement by Rednote, Douyin, Microsoft, Google, SK hynix,
+Anthropic, OpenAI or the upstream maintainers is implied.
+
+Detailed reuse/modification matrix: references/PROVENANCE.md.

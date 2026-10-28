@@ -1,0 +1,4 @@
+interface:
+  display_name: "Rednote美股舆情"
+  short_description: "采集Rednote美股讨论、保留raw并生成固定品牌4比3报告"
+  default_prompt: "Use $rednote-us-stock-sentiment-skill to collect a 24-hour Rednote US-stock discussion sample, preserve raw evidence, and render the fixed branded 4:3 report."

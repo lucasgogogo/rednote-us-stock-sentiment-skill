@@ -1,0 +1,14 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Fixed branded 4:3 sentiment report",
+  "type":"object",
+  "required":["schema_version","keyword","source","timezone","window_start_utc","window_end_utc","posts_in_window","primary_comments_exported","max_comments_per_post","stance_counts","timeline","stock_ranking"],
+  "$defs":{"counts":{"type":"object","required":["看多","看空","中性","多空混合","无法判断"],"additionalProperties":false,"properties":{"看多":{"type":"integer","minimum":0},"看空":{"type":"integer","minimum":0},"中性":{"type":"integer","minimum":0},"多空混合":{"type":"integer","minimum":0},"无法判断":{"type":"integer","minimum":0}}}},
+  "properties":{
+    "schema_version":{"const":"1.0"},"demo":{"type":"boolean"},"keyword":{"type":"string"},"source":{"type":"string"},"timezone":{"type":"string"},"window_start_utc":{"type":"string","format":"date-time"},"window_end_utc":{"type":"string","format":"date-time"},
+    "posts_in_window":{"type":"integer","minimum":0,"maximum":100},"primary_comments_exported":{"type":"integer","minimum":0,"maximum":5000},"max_comments_per_post":{"type":"integer","minimum":1,"maximum":50},"stance_counts":{"$ref":"#/$defs/counts"},
+    "timeline":{"type":"array","minItems":12,"maxItems":12,"items":{"type":"integer","minimum":0}},
+    "stock_ranking":{"type":"array","items":{"type":"object","required":["ticker","name","posts","post_stance_counts"],"properties":{"ticker":{"type":"string","pattern":"^[A-Za-z0-9.\\-]{1,16}$"},"name":{"type":"string"},"posts":{"type":"integer","minimum":0,"maximum":100},"post_stance_counts":{"$ref":"#/$defs/counts"}}}},
+    "metrics":{"type":["object","null"],"properties":{"elapsed_seconds":{"type":["number","null"],"minimum":0},"usage":{"type":["object","null"],"required":["input_tokens","cached_input_tokens","cache_write_input_tokens","output_tokens"],"properties":{"input_tokens":{"type":"integer","minimum":0},"cached_input_tokens":{"type":"integer","minimum":0},"cache_write_input_tokens":{"type":"integer","minimum":0},"output_tokens":{"type":"integer","minimum":0}}},"billing":{"type":["object","null"],"properties":{"plan":{"type":"string"},"extra_usd":{"type":["number","null"],"minimum":0},"source":{"type":"string"}}},"quota":{"type":["object","null"],"properties":{"before":{"type":"number","minimum":0,"maximum":100},"after":{"type":"number","minimum":0,"maximum":100},"same_window":{"type":"boolean"},"source":{"type":"string"}}}}}
+  }
+}
